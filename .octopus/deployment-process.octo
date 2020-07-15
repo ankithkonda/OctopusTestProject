@@ -2,9 +2,71 @@ process {
     Id = "deploymentprocess-Projects-4181"
     OwnerId = "Projects-4181"
     IsFrozen = false
-    Version = 0
+    Version = 1
     SpaceId = "Spaces-582"
     Steps {
+        run_a_script {
+            Id = "78094844-1867-4690-a22e-7da1a0089cd3"
+            Name = "Run a Script"
+            Condition = "Success"
+            StartTrigger = "StartAfterPrevious"
+            PackageRequirement = "LetOctopusDecide"
+            Actions {
+                run_a_script {
+                    Id = "2e671aed-94a3-4267-a7a6-f8f218a06899"
+                    Name = "Run a Script"
+                    ActionType = "Octopus.Script"
+                    WorkerPoolIdOrName = "WorkerPools-662"
+                    Container {
+                    }
+                    IsDisabled = false
+                    IsRequired = false
+                    Environments = []
+                    ExcludedEnvironments = []
+                    Channels = []
+                    TenantTags = []
+                    Packages {
+                    }
+                    Condition = "Success"
+                    Properties {
+                        octopus.action.runonserver {
+                            Key = "Octopus.Action.RunOnServer"
+                            Value {
+                                Value = "true"
+                                IsSensitive = false
+                                HasValue = true
+                            }
+                        }
+                        octopus.action.script.scriptsource {
+                            Key = "Octopus.Action.Script.ScriptSource"
+                            Value {
+                                Value = "Inline"
+                                IsSensitive = false
+                                HasValue = true
+                            }
+                        }
+                        octopus.action.script.syntax {
+                            Key = "Octopus.Action.Script.Syntax"
+                            Value {
+                                Value = "PowerShell"
+                                IsSensitive = false
+                                HasValue = true
+                            }
+                        }
+                        octopus.action.script.scriptbody {
+                            Key = "Octopus.Action.Script.ScriptBody"
+                            Value {
+                                Value = "test"
+                                IsSensitive = false
+                                HasValue = true
+                            }
+                        }
+                    }
+                }
+            }
+            Properties {
+            }
+        }
     }
-    RelatedDocumentIds = []
+    RelatedDocumentIds = ["WorkerPools-662"]
 }
